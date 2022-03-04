@@ -46,7 +46,9 @@ pipeline {
         stage("Build") {
             when { branch 'master' }
             steps {
-                // do your build
+                sh '''
+                    test
+                   '''
             }
         }
     }
