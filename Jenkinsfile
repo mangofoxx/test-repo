@@ -37,19 +37,49 @@
 //
 // }
 
+// pipeline {
+//
+//     agent any
+//
+//     stages {
+//
+//         stage("Build") {
+//             when { branch 'master' }
+//             steps {
+//                 sh '''
+//                     echo "test"
+//                    '''
+//             }
+//         }
+//     }
+// }
+
 pipeline {
 
-    agent any
+  agent any
 
-    stages {
+  options {
 
-        stage("Build") {
-            when { branch 'master' }
-            steps {
-                sh '''
-                    echo "test"
-                   '''
-            }
-        }
+    buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')
+
+  }
+
+  stages {
+
+    stage('Hello') {
+
+      steps {
+
+        sh '''
+
+          java -version
+
+        '''
+
+      }
+
     }
+
+  }
+
 }
