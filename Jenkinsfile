@@ -68,7 +68,6 @@ pipeline {
 
     stage('Hello') {
 
-      when { branch 'master' }
       steps {
 
         sh '''
