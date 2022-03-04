@@ -1,38 +1,53 @@
+// pipeline {
+//
+//      agent any
+// //   agent { label "jenkins"}
+//
+// //   parameters {
+// //     choice(name: 'env', choices: ['staging', 'devbox-core-4', 'preproduction'])
+// //   }
+//
+//   options {
+//
+//     buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')
+//
+//   }
+//
+//   stages {
+//
+//     stage('Hello') {
+//             steps {
+//                 sh '''
+//                  mvn clean deploy
+//                 '''
+//                 }
+//         }
+//
+// //       steps {
+// //
+// //         withCredentials([[$class: 'VaultTokenCredentialBinding', credentialsId: 'vaulttoken', vaultAddr: 'https://localhost:8200']]) {
+// //
+// //             }
+//
+//       }
+//
+//     }
+//
+//   }
+//
+// }
+
 pipeline {
 
-     agent any
-//   agent { label "jenkins"}
+    agent any
 
-//   parameters {
-//     choice(name: 'env', choices: ['staging', 'devbox-core-4', 'preproduction'])
-//   }
+    stages {
 
-  options {
-
-    buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')
-
-  }
-
-  stages {
-
-    stage('Hello') {
+        stage("Build") {
+            when { branch 'master' }
             steps {
-                sh '''
-                 mvn clean deploy
-                '''
-                }
+                // do your build
+            }
         }
-
-//       steps {
-//
-//         withCredentials([[$class: 'VaultTokenCredentialBinding', credentialsId: 'vaulttoken', vaultAddr: 'https://localhost:8200']]) {
-//
-//             }
-
-      }
-
     }
-
-  }
-
 }
