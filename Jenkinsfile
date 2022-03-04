@@ -47,7 +47,7 @@ pipeline {
             when { branch 'master' }
             steps {
                 sh '''
-                    test test test
+                    echo "test"
                    '''
             }
         }
